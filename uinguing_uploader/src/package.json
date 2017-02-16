@@ -1,0 +1,18 @@
+{
+  "name": "uinguing_uploader",
+  "version": "1.0.0",
+  "description": "mink side project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app_osx": "electron-packager . uinguing_uploader --overwrite --platform=darwin --arch=x64 --out=dist"
+  },
+  "dependencies": {
+    "electron-packager": "^8.5.1",
+    "electron-prebuilt": "^1.4.13",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {},
+  "author": "jungmyung@ncsoft.com",
+  "license": "ISC"
+}
