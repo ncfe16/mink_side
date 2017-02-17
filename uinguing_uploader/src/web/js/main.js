@@ -1,8 +1,8 @@
 /**
  * Main.js
  */
-$.support.cors = true;
 var sImgUrl = "";
+var sUrl = "https://nexus-mink.ncsoft.com/webhook/f4bc6369-38a7-49d7-a1b2-ec59b7156795";
 
 $("#searchButton").on("click",function(e){
     var sText = document.getElementById("searchText").value;
@@ -10,23 +10,16 @@ $("#searchButton").on("click",function(e){
 
     if(oData[sText]) {
         sImgUrl = oData[sText];
-        elImage.innerHTML = '<img src="' + oData[sText] + '">';
-        $("#sendArea").show();
+        var sQuery = "?text=" + sText + encodeURI("  " + sImgUrl);
+
+        $.ajax({
+            url: sUrl + sQuery ,
+            dataType: 'jsonp',
+            success:function(data){
+                console.log(data);
+            }
+        });
+    } else {
+      alert("적당한 짤방이 없음");
     }
-});
-
-$("#sendButton").on("click", function(e) {
-    var sUrl = "http://www.ncsoft.com";
-
-    var sText = "?text=" + encodeURI(sImgUrl);
-
-    console.log(sUrl + sText);
-
-    $.ajax({
-        url: sUrl + sText ,
-        dataType: 'jsonp',
-        success:function(data){
-            console.log(data);
-        }
-    });
 });
